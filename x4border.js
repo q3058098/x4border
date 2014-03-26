@@ -8,8 +8,8 @@
 
 	var log = function (a) {
         
-            window.console && console.log(W3C ? a : a + "")
-	}
+        window.console && console.log(W3C ? a : a + "")
+    }
 
 	var getType = function (el){
 
@@ -205,21 +205,21 @@
 
 		init : function (config,callback){
 
-			x4border.errorMsg = config.errorMsg || "这儿错了=.=!";
-
 			//获取作用范围,优先为config.parent,未填则默认为document
 			var parent = config && getType(config) === "object" && config.parent
 					? document.getElementById(config.parent) 
 					: document;
 
 			//根据外部配置添加验证方法
-			if(getType(config) === "object"){
+			if(config && getType(config) === "object"){
 
 				//何时触发验证,默认为blur
-				var events = config.events || "blur";
+				var events = config.events;
 				var configures = config.configure;
 
 				x4border.events = events;
+				
+				x4border.errorMsg = config.errorMsg;
 
 				if(configures){
 
@@ -244,6 +244,10 @@
 						x4border.promptInfos[typeName] = cfg["prompt"];
 					}
 				}		
+			}else {
+
+				x4border.events = "blur";
+				x4border.errorMsg = "这里错了=,=!";
 			}
 
 			//如果没有填写参数,且第一个参数为function类型,则为回调,否则第二个参数为回调
