@@ -210,16 +210,19 @@
 					? document.getElementById(config.parent) 
 					: document;
 
+			var defaultEvents = "blur";
+			var defaultErrorMsg = "这里错了=,=";
+
 			//根据外部配置添加验证方法
 			if(config && getType(config) === "object"){
 
 				//何时触发验证,默认为blur
-				var events = config.events || "blur";
+				var events = config.events || defaultEvents;
 				var configures = config.configure;
 
 				x4border.events = events;
 				
-				x4border.errorMsg = config.errorMsg || "这里错了=,=!";
+				x4border.errorMsg = config.errorMsg || defaultErrorMsg;
 
 				if(configures){
 
@@ -246,8 +249,8 @@
 				}		
 			}else {
 
-				x4border.events = "blur";
-				x4border.errorMsg = "这里错了=,=!";
+				x4border.events = defaultEvents;
+				x4border.errorMsg = defaultErrorMsg;
 			}
 
 			//如果没有填写参数,且第一个参数为function类型,则为回调,否则第二个参数为回调
@@ -269,8 +272,7 @@
 
 			this.tags = parent.getElementsByTagName('input');
 					
-				var i = 0,
-					tagsLen = this.tags.length;
+			var i = 0,tagsLen = this.tags.length;
 
 			var loopMethod = [];
 
