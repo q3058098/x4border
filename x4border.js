@@ -214,12 +214,12 @@
 			if(config && getType(config) === "object"){
 
 				//何时触发验证,默认为blur
-				var events = config.events;
+				var events = config.events || "blur";
 				var configures = config.configure;
 
 				x4border.events = events;
 				
-				x4border.errorMsg = config.errorMsg;
+				x4border.errorMsg = config.errorMsg || "这里错了=,=!";
 
 				if(configures){
 
@@ -380,6 +380,8 @@
 									
 									sysvali(_this.tags[someoneError],/\s{1000}/,x4border.errorMsg);
 								}
+
+								this.blur();
 							}
 							//在方法库中找到所需方法才继续执行
 							else if(x4border.regEx.hasOwnProperty(currentMethod)){
