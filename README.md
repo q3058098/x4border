@@ -1,4 +1,4 @@
-x4border2
+x4border
 =========
 x4border是一个验证插件,允许自定义正则规则,采用原生Javascript编写,不依赖任何库或框架,支持AMD规范
 
